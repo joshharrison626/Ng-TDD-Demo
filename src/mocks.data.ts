@@ -100,10 +100,13 @@ export const Worker = {
     }
   ],
   clean: {
-    Idsid: 'jjharris',
     FirstNm: 'Joshua',
     LastNm: 'Harrison',
-    FullNm: 'Joshua Harrison',
+    CorporateEmailTxt: 'joshua.j.harrison@intel.com',
+    JobTypeNm: 'Application Developer',
+    WorkPhoneNbr: '+1 (916) 377 5222',
+    OfficeLocation: 'RA1-FL3-C14',
+    DepartmentNm: 'Development Methods & Assets',
     WWID: '10706728',
   }
 };
