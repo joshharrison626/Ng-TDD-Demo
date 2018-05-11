@@ -2,8 +2,9 @@
 
 ## Setup
 
-1. show mocks.data.ts
-1. show config.ts
+1. show `mocks.data.ts`
+1. show `config.ts`
+1. show `models/user.model.ts`
 1. generate worker component
     1. ng generate component worker-picker
 1. generate worker service
@@ -231,7 +232,7 @@
     1. modify workerService test to check for `wwid` being passed in
         ```script
         it('should call WorkerService and pass in the value of wwid', () => {
-            const wwid = worker.clean.WWID;
+            const wwid = Worker.clean.WWID;
             component.wwid = wwid;
 
             component.lookup();
