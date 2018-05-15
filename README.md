@@ -308,13 +308,98 @@
 
 ## Service
 
-WIP
-
-1. worker.service.ts
-    1. create `find()` method
+1. worker.service.spec.ts
+    1. add `fdescribe` to line 5
+    1. add local variables
         ```script
-        find() {}
+        let workerService: WorkerService;
+        let backend: HttpTestingController;
+        ```
+    1. import Http dependencies
+        ```script
+        import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+        imports: [
+            HttpClientTestingModule
+        ],
+        ```
+    1. add inject to local variable assignment
+        ```script
+        beforeEach(inject([WorkerService, HttpTestingController], (WorkerService, HttpTestingController) => {
+            workerService = WorkerService;
+            backend = HttpTestingController;
+        }));
+        ```
+    1. add `afterEach` for the backend
+        ```script
+        afterEach(() => {
+            backend.verify();
+        });
+        ```
+    1. remove `inject` function from default test
+        ```script
+        it('should be created', () => {
+            expect(workerService).toBeTruthy();
+        }));
+        ```
+1. worker.service.spec.ts
+    1. add http call test
+        ```script
+        it('should call the Workers API with the WWID that was passed in', () => {
+            const WWID = Worker.clean.WWID;
+
+            workerService.find(WWID).subscribe();
+
+            backend.expectOne({url: `${config.workerUrl}/${WWID}`, method: 'GET'}).flush(Worker.raw);
+        });
         ```
 1. worker.service.ts
-    1. add `wwid` as required argument to `find()`
-        `find(wwid: string) {}`
+    1. modify `constructor`
+        ```script
+        constructor(private http: HttpClient) { }
+        ```
+    1. modify `find` method
+        ```script
+        find(wwid: string): Observable<User> {
+            const url = `${config.workerUrl}/${wwid}`;
+            return this.http.get<any>(url, { withCredentials: true });
+        }
+        ```
+1. worker.service.spec.ts
+    1. add test for `Worker.clean` being returned
+        ```script
+        it('should return a worker as type of User', () => {
+            const WWID = Worker.clean.WWID;
+
+            workerService.find(WWID).subscribe(worker => {
+                expect(worker).toEqual(<User>Worker.clean);
+            });
+
+            backend.expectOne({url: `${config.workerUrl}/${WWID}`, method: 'GET'}).flush(Worker.raw);
+        });
+        ```
+1. worker.service.ts
+    1. modify `find` return
+        ```script
+        find(wwid: string): Observable<User> {
+            const url = `${config.workerUrl}/${wwid}`;
+            return this.http
+                .get<any>(url, { withCredentials: true })
+                .map(worker => {
+                    return {
+                    FirstNm: worker[0].FirstNm,
+                    LastNm: worker[0].LastNm,
+                    CorporateEmailTxt: worker[0].CorporateEmailTxt,
+                    JobTypeNm: worker[0].JobTypeNm,
+                    WorkPhoneNbr: worker[0].WorkPhoneNbr,
+                    OfficeLocation: worker[0].OfficeLocation,
+                    DepartmentNm: worker[0].DepartmentNm,
+                    WWID: worker[0].WWID,
+                    };
+                });
+        }
+        ```
+    1. import `rxjs/map`
+        ```script
+        import 'rxjs/add/operator/map';
+        ```
