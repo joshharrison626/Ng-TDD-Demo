@@ -66,7 +66,6 @@ export const Worker = {
       LegalFullNm: 'Joshua Harrison',
       LegalLastNm: 'Harrison',
       LegalMiddleInitialTxt: 'J',
-      LegalMiddleNm: 'Josey',
       LegalNmInitialsTxt: 'JJH',
       MailStopTxt: 'RA1-333',
       ManagerInd: 'N',

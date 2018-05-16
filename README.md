@@ -2,15 +2,15 @@
 
 ## Setup
 
-1. show `mocks.data.ts`
 1. show `config.ts`
+1. show `mocks.data.ts`
 1. show `models/user.model.ts`
 1. generate worker component
     1. ng generate component worker-picker
 1. generate worker service
     1. ng generate service worker --flat=false
 1. run `ng serve`
-1. run `ng test -sm=false`
+1. run `ng test -sm=false -cc`
 
 ## Build Component & Tests
 
@@ -124,20 +124,11 @@
           font-family: Arial;
         }
         ```
-1. app.module.ts
-    1. add `FormsModule`
-
-    ```script
-        import { FormsModule } from '@angular/forms';
-        imports: [
-            BrowserModule,
-            FormsModule,
-        ],
-    ```
 1. worker-picker.component.spec.ts
     1. add `fdescribe` to line 5
     1. add `FormsModule` to imports
         ```script
+        import { FormsModule } from '@angular/forms';
         imports: [
             FormsModule,
         ],
@@ -290,10 +281,12 @@
         ```script
         import 'rxjs/add/observable/of';
         ````
+1. worker-picker.component.ts
     1. modify workerService.find call
         ```script
         this.workerService.find(this.wwid).subscribe(worker => this.user = worker);
         ```
+1. worker-picker.component.spec.ts
     1. **optional** group arrange and act into single setup
         ```script
         let wwid;
@@ -340,17 +333,18 @@
         ```script
         it('should be created', () => {
             expect(workerService).toBeTruthy();
-        }));
+        });
         ```
-1. worker.service.spec.ts
     1. add http call test
         ```script
-        it('should call the Workers API with the WWID that was passed in', () => {
-            const WWID = Worker.clean.WWID;
+        describe('find', () => {
+            it('should call the Workers API with the WWID that was passed in', () => {
+                const WWID = Worker.clean.WWID;
 
-            workerService.find(WWID).subscribe();
+                workerService.find(WWID).subscribe();
 
-            backend.expectOne({url: `${config.workerUrl}/${WWID}`, method: 'GET'}).flush(Worker.raw);
+                backend.expectOne({url: `${config.workerUrl}/${WWID}`, method: 'GET'}).flush(Worker.raw);
+            });
         });
         ```
 1. worker.service.ts
@@ -366,7 +360,7 @@
         }
         ```
 1. worker.service.spec.ts
-    1. add test for `Worker.clean` being returned
+    1. add test for `Worker.clean` being returned to `find` block
         ```script
         it('should return a worker as type of User', () => {
             const WWID = Worker.clean.WWID;
@@ -403,3 +397,15 @@
         ```script
         import 'rxjs/add/operator/map';
         ```
+1. app.module.ts
+    1. add `FormsModule`
+
+    ```script
+        import { FormsModule } from '@angular/forms';
+        import { HttpClientModule } from '@angular/common/http';
+        imports: [
+            BrowserModule,
+            FormsModule,
+            HttpClientModule,
+        ],
+    ```
