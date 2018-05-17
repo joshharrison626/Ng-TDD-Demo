@@ -252,7 +252,7 @@
         ```
     1. add `lookup` block test for returned service result being set to user variable
         ```script
-        it('should transform the result returned from WorkerService.find and set to user', () => {
+        it('should set the result returned from WorkerService.find to user', () => {
             const wwid = Worker.clean.WWID;
             component.wwid = wwid;
 
@@ -275,7 +275,7 @@
         ```
     1. add `returnValue` to `WorkerService.find` spy
         ```script
-        find = jasmine.createSpy('find').and.returnValue(Observable.of(Worker.raw[0]));
+        find = jasmine.createSpy('find').and.returnValue(Observable.of(Worker.clean));
         ````
     1. import Observable.of
         ```script
@@ -397,15 +397,35 @@
         ```script
         import 'rxjs/add/operator/map';
         ```
+
+## App
+
+1. app.component.spec.ts
+    ```script
+    declarations: [
+        AppComponent,
+        WorkerPickerComponent,
+    ],
+    imports: [
+        FormsModule,
+        HttpClientTestingModule,
+    ],
+    providers: [
+        WorkerService,
+    ]
+    ```
 1. app.module.ts
     1. add `FormsModule`
 
     ```script
-        import { FormsModule } from '@angular/forms';
-        import { HttpClientModule } from '@angular/common/http';
-        imports: [
-            BrowserModule,
-            FormsModule,
-            HttpClientModule,
-        ],
+    import { FormsModule } from '@angular/forms';
+    import { HttpClientModule } from '@angular/common/http';
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+    ],
+    providers: [
+    WorkerService,
+    ]
     ```
