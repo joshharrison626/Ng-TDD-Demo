@@ -1,3 +1,3 @@
 export const config = {
-  workerUrl: 'https://workers.intel.com/Services/hrdataservices/api/Worker/GetWorker',
+  workerUrl: 'https://worker-api.apps1-fm-int.icloud.intel.com/v1/workers?q=',
 };

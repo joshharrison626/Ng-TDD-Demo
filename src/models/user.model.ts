@@ -4,7 +4,5 @@ export class User {
   CorporateEmailTxt: string;
   JobTypeNm: string;
   WorkPhoneNbr: string;
-  OfficeLocation: string;
-  DepartmentNm: string;
   WWID: string;
 }

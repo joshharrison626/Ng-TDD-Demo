@@ -20,108 +20,106 @@
     1. copy/paste html
         ```html
         <section class="lookup">
-          <input type="text" placeholder="search by wwid" [(ngModel)]="wwid">
-          <button (click)="lookup()" type="button">Lookup</button>
+            <input type="text" placeholder="search by wwid" [(ngModel)]="wwid">
+            <button (click)="lookup()" type="button">Lookup</button>
         </section>
 
         <section class="contact-card panel" *ngIf="user">
-          <div class="image">
-            <img src="https://photos.intel.com/images/{{ user.WWID }}.jpg">
-          </div>
-          <div class="contacts">
-            <p>{{ user.FirstNm }} {{ user.LastNm}}</p>
-            <p>{{ user. JobTypeNm }}</p>
-            <p>{{ user.DepartmentNm }}</p>
-            <p>Email: <a href="mailto:{{ user.CorporateEmailTxt}}">{{ user.CorporateEmailTxt}}</a>
-            </p>
-            <p>Phone: {{ user.WorkPhoneNbr }}</p>
-            <p>Office: {{ user.OfficeLocation }}</p>
-          </div>
+            <div class="image">
+                <img src="https://photos.intel.com/images/{{ user.WWID }}.jpg">
+            </div>
+            <div class="contacts">
+                <p>{{ user.FirstNm }} {{ user.LastNm}}</p>
+                <p>{{ user. JobTypeNm }}</p>
+                <p>Email: <a href="mailto:{{ user.CorporateEmailTxt}}">{{ user.CorporateEmailTxt}}</a>
+                </p>
+                <p>Phone: {{ user.WorkPhoneNbr }}</p>
+            </div>
         </section>
         ```
 1. worker-picker.component.css
     1. copy/paste css
         ```css
         section {
-          width: 1170px;
-          margin-right: auto;
-          margin-left: auto;
-          margin-bottom: 1em;
-          padding-left: 15px;
-          padding-right: 15px;
+            width: 1170px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 1em;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .lookup {
-          text-align: center;
+            text-align: center;
         }
 
         input {
-          width: 50%;
-          height: 36px;
-          padding: 6px 12px;
-          font-size: 15px;
-          line-height: 1.5;
-          color: #333;
-          background-color: #fff;
-          background-image: none;
-          border: 1px solid #b1babf;
-          border-radius: 2px;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            width: 50%;
+            height: 36px;
+            padding: 6px 12px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #b1babf;
+            border-radius: 2px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         }
 
         button {
-          color: #fff;
-          background: #0071c5;
-          border-color: #0071c5;
-          display: inline-block;
-          margin-bottom: 0;
-          font-weight: normal;
-          text-align: center;
-          vertical-align: middle;
-          touch-action: manipulation;
-          cursor: pointer;
-          background-image: none;
-          border: 1px solid transparent;
-          white-space: nowrap;
-          padding: 6px 12px;
-          font-size: 15px;
-          line-height: 1.5;
-          border-radius: 2px;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
+            color: #fff;
+            background: #0071c5;
+            border-color: #0071c5;
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 12px;
+            font-size: 15px;
+            line-height: 1.5;
+            border-radius: 2px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .contact-card.panel {
-          width: 30%;
-          margin-bottom: 22px;
-          background-color: #fff;
-          border: 1px solid transparent;
-          border-radius: 2px;
-          -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-          border-color: #b1babf;
-          padding: 15px;
+            width: 30%;
+            margin-bottom: 22px;
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+            border-color: #b1babf;
+            padding: 15px;
         }
 
         .contact-card dt,dd {
-          display: inline-block;
+            display: inline-block;
         }
 
         .contact-card .image {
-          display: inline-block;
+            display: inline-block;
         }
 
         .contact-card .contacts {
-          display: inline-block;
-          position: relative;
-          top: -22px;
+            display: inline-block;
+            position: relative;
+            top: -67px;
         }
 
         .contacts p {
-          margin: 0 0 5px 15px;
-          font-family: Arial;
+            margin: 0 0 5px 15px;
+            font-family: Arial;
         }
         ```
 1. worker-picker.component.spec.ts
@@ -265,11 +263,9 @@
         1. this is when you will break out your expected results into multiple asserts
         ```script
         expect(component.user.CorporateEmailTxt).toEqual(Worker.clean.CorporateEmailTxt);
-        expect(component.user.DepartmentNm).toEqual(Worker.clean.DepartmentNm);
         expect(component.user.FirstNm).toEqual(Worker.clean.FirstNm);
         expect(component.user.JobTypeNm).toEqual(Worker.clean.JobTypeNm);
         expect(component.user.LastNm).toEqual(Worker.clean.LastNm);
-        expect(component.user.OfficeLocation).toEqual(Worker.clean.OfficeLocation);
         expect(component.user.WorkPhoneNbr).toEqual(Worker.clean.WorkPhoneNbr);
         expect(component.user.WWID).toEqual(Worker.clean.WWID);
         ```
@@ -343,7 +339,7 @@
 
                 workerService.find(WWID).subscribe();
 
-                backend.expectOne({url: `${config.workerUrl}/${WWID}`, method: 'GET'}).flush(Worker.raw);
+                backend.expectOne({url: `${config.workerUrl}${WWID}`, method: 'GET'});
             });
         });
         ```
@@ -355,7 +351,7 @@
     1. modify `find` method
         ```script
         find(wwid: string): Observable<User> {
-            const url = `${config.workerUrl}/${wwid}`;
+            const url = `${config.workerUrl}${wwid}`;
             return this.http.get<any>(url, { withCredentials: true });
         }
         ```
@@ -369,7 +365,7 @@
                 expect(worker).toEqual(<User>Worker.clean);
             });
 
-            backend.expectOne({url: `${config.workerUrl}/${WWID}`, method: 'GET'}).flush(Worker.raw);
+            backend.expectOne({url: `${config.workerUrl}${WWID}`, method: 'GET'}).flush(Worker.raw);
         });
         ```
 1. worker.service.ts
@@ -379,16 +375,16 @@
             const url = `${config.workerUrl}/${wwid}`;
             return this.http
                 .get<any>(url, { withCredentials: true })
-                .map(worker => {
+                .map(response => {
+                    const worker = response.hits[0]._source;
+
                     return {
-                    FirstNm: worker[0].FirstNm,
-                    LastNm: worker[0].LastNm,
-                    CorporateEmailTxt: worker[0].CorporateEmailTxt,
-                    JobTypeNm: worker[0].JobTypeNm,
-                    WorkPhoneNbr: worker[0].WorkPhoneNbr,
-                    OfficeLocation: worker[0].OfficeLocation,
-                    DepartmentNm: worker[0].DepartmentNm,
-                    WWID: worker[0].WWID,
+                        FirstNm: worker.FirstNm,
+                        LastNm: worker.LastNm,
+                        CorporateEmailTxt: worker.CorporateEmailTxt,
+                        JobTypeNm: worker.JobTypeNm,
+                        WorkPhoneNbr: worker.WorkPhoneNbr,
+                        WWID: worker.WWID,
                     };
                 });
         }
@@ -426,6 +422,6 @@
         HttpClientModule,
     ],
     providers: [
-    WorkerService,
+        WorkerService,
     ]
     ```
