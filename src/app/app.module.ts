@@ -4,21 +4,28 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HttpInterceptorService } from '../http-interceptor/http-interceptor.service';
+import { WorkerPickerComponent } from './worker-picker/worker-picker.component';
+import { FormsModule } from '@angular/forms';
+import { WorkerService } from './worker/worker.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WorkerPickerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi: true,
-    }
+    WorkerService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: HttpInterceptorService,
+    //   multi: true,
+    // }
   ],
   bootstrap: [AppComponent]
 })

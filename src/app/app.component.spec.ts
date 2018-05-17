@@ -1,11 +1,23 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { WorkerPickerComponent } from './worker-picker/worker-picker.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { WorkerService } from './worker/worker.service';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        WorkerPickerComponent,
       ],
+      imports: [
+        FormsModule,
+        HttpClientTestingModule,
+      ],
+      providers: [
+        WorkerService,
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
