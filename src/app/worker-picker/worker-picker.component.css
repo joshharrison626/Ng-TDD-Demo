@@ -1,0 +1,81 @@
+section {
+  width: 1170px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1em;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.lookup {
+  text-align: center;
+}
+
+input {
+  width: 50%;
+  height: 36px;
+  padding: 6px 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #b1babf;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+button {
+  color: #fff;
+  background: #0071c5;
+  border-color: #0071c5;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 2px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.contact-card.panel {
+  width: 30%;
+  margin-bottom: 22px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #b1babf;
+  padding: 15px;
+}
+
+.contact-card dt,dd {
+  display: inline-block;
+}
+
+.contact-card .image {
+  display: inline-block;
+}
+
+.contact-card .contacts {
+  display: inline-block;
+  position: relative;
+  top: -67px;
+}
+
+.contacts p {
+  margin: 0 0 5px 15px;
+  font-family: Arial;
+}

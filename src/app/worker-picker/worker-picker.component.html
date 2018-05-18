@@ -1,0 +1,17 @@
+<section class="lookup">
+  <input type="text" placeholder="search by wwid" [(ngModel)]="wwid">
+  <button (click)="lookup()" type="button">Lookup</button>
+</section>
+
+<section class="contact-card panel" *ngIf="user">
+  <div class="image">
+      <img src="https://photos.intel.com/images/{{ user.WWID }}.jpg">
+  </div>
+  <div class="contacts">
+      <p>{{ user.FirstNm }} {{ user.LastNm}}</p>
+      <p>{{ user. JobTypeNm }}</p>
+      <p>Email: <a href="mailto:{{ user.CorporateEmailTxt}}">{{ user.CorporateEmailTxt}}</a>
+      </p>
+      <p>Phone: {{ user.WorkPhoneNbr }}</p>
+  </div>
+</section>
